@@ -1,0 +1,12 @@
+bcryptjs to securely hash passwords, which is a common use case in web applications, especially when dealing with user authentication.
+
+Pusher is a platform that provides APIs and developer tools to enable real-time communication in web and mobile applications. 
+It allows you to add real-time features such as chat, notifications, and updates to your applications without managing 
+the infrastructure yourself.
+
+Next.js Cloudinary integration allows you to easily upload, manage, and deliver images and other media assets in your Next.js 
+applications using the Cloudinary platform. Cloudinary offers a cloud-based media management solution that provides features 
+such as image and video uploading, storage, transformation, optimization, and delivery through a powerful API.
+
+React Hot Toast is a toast notification library for React applications. It allows you to display customizable toast 
+messages to users in response to certain events or actions in your application. 

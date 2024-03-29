@@ -4,11 +4,17 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
 import { Concert_One } from "next/font/google";
+import { useForm } from "react-hook-form";
 
 const pop = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 const san = Concert_One({ subsets: ["latin"], weight: ["400"] });
 
 const Form = ({ type }) => {
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm();
   return (
     // outer viewport
     <div

@@ -10,3 +10,5 @@ such as image and video uploading, storage, transformation, optimization, and de
 
 React Hot Toast is a toast notification library for React applications. It allows you to display customizable toast 
 messages to users in response to certain events or actions in your application. 
+
+mongodb+srv://<username>:<password>@cluster0.u5a53p6.mongodb.net/

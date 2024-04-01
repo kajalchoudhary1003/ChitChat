@@ -6,6 +6,9 @@ import Link from "next/link";
 import { Poppins } from "next/font/google";
 import { Concert_One } from "next/font/google";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { signIn } from "next-auth/react";
 
 const pop = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 const san = Concert_One({ subsets: ["latin"], weight: ["400"] });
@@ -17,7 +20,38 @@ const Form = ({ type }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {console.log(data)};
+  const router = useRouter();
+
+  const onSubmit = async (data) => {
+    if (type === "register") {
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        router.push("/");
+      }
+      if (res.error) {
+        toast.error("Something went wrong");
+      }
+    }
+    if (type === "login") {
+      const res = await signIn("credentials", {
+        ...data,
+        redirect: false,
+      });
+      if (res.ok) {
+        router.push("/chats");
+      }
+      if (res.error) {
+        toast.error("Invalid email or password");
+      }
+    }
+  };
+
   return (
     // outer viewport
     <div
@@ -33,14 +67,17 @@ const Form = ({ type }) => {
           </h1>
         </div>
         {/* form */}
-        <form onSubmit={handleSubmit(onSubmit)} className="form w-80 flex flex-col items-center">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="form w-80 flex flex-col items-center"
+        >
           {/* conditional rendering */}
           {type === "register" && (
             // username
             <>
               <div className="input flex flex-row border border-slate-300 rounded-md px-3 py-1 my-2 w-full focus-within:border-slate-600 focus-within:border-2">
                 <Input
-                defaultValue=""
+                  defaultValue=""
                   {...register("username", {
                     required: "username is required",
                     validate: (value) => {
@@ -88,7 +125,9 @@ const Form = ({ type }) => {
               />
             </div>
             {errors.email && (
-              <p className="text-red-500 text-sm self-start">{errors.email.message}</p>
+              <p className="text-red-500 text-sm self-start">
+                {errors.email.message}
+              </p>
             )}
           </>
           {/* password */}
@@ -119,7 +158,9 @@ const Form = ({ type }) => {
               />
             </div>
             {errors.password && (
-              <p className="text-red-500 text-sm self-start">{errors.password.message}</p>
+              <p className="text-red-500 text-sm self-start">
+                {errors.password.message}
+              </p>
             )}
              
           </>

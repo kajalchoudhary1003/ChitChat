@@ -1,10 +1,10 @@
-import { connectToDatabase } from "../../../utils/mongodb";
-import User from "../../../models/User";
-import { hash } from "bcrypt";
+import { connectToDB } from "@mongodb";
+import User from "@models/User";
+import { hash } from "bcryptjs";
 
 export const POST = async (req, res) => {
   try {
-    await connectToDatabase();
+    await connectToDB();
 
     const body = await req.json();
     const { username, email, password } = body;

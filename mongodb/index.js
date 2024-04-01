@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 let isConnected = false;
 
-export const connectToDatabase = async () => {
+export const connectToDB = async () => {
     mongoose.set('strictQuery', true);
     if (isConnected) {
         console.log("MongoDB is already connected");
@@ -11,7 +11,6 @@ export const connectToDatabase = async () => {
     try {
 await mongoose.connect(process.env.MONGODB_URL, {
     dbName: "chit-chat",
-    newURLParser: true,
     useUnifiedTopology: true,
     });
 

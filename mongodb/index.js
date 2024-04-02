@@ -11,7 +11,7 @@ export const connectToDB = async () => {
     try {
 await mongoose.connect(process.env.MONGODB_URL, {
     dbName: "chit-chat",
-    useUnifiedTopology: true,
+    useUnifiedTopology: true, // Use new server discovery and monitoring engine
     });
 
     isConnected = true;

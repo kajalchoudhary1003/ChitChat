@@ -5,7 +5,8 @@ const Chats = () => {
   const { data: session} = useSession()
   console.log(session)
   return (
-    <div>Chats</div>
+    <>
+    <div>Chats</div></>
   )
 }
 

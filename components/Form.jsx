@@ -182,7 +182,7 @@ const Form = ({ type }) => {
         ) : (
           <Link href="/register">
             <h1 className="mt-2 text-slate-500 hover:text-black text-sm hover:text-semibold">
-              Don't have an account. Register Here!
+              Do not have an account. Register Here!
             </h1>
           </Link>
         )}
